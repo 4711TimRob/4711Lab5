@@ -20,7 +20,8 @@ class Mtce extends Application
 	
 	public function index()
 	{
-		$this->data['pagetitle'] = 'TODO List Maintenance';
+		$role = $this->session->userdata('userrole');
+		$this->data['pagetitle'] = 'TODO List Maintenance ('. $role . ')';	
 		$tasks = $this->tasks->all(); // get all the tasks
 
 
@@ -40,4 +41,7 @@ class Mtce extends Application
 		$this->render();
 		
 	}
+	
+	
+	
 }
