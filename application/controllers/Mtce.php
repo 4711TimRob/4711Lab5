@@ -37,7 +37,11 @@ class Mtce extends Application
 	    {
 	        if (!empty($task->status))
 	            $task->status = $this->statuses->get($task->status)->name;
-	        $result .= $this->parser->parse('oneitem', (array) $task, true);
+			
+			if ($role == ROLE_OWNER)
+				$result .= $this->parser->parse('oneitemx', (array) $task, true);
+			else
+				$result .= $this->parser->parse('oneitem', (array) $task, true);
 	    }
 
 	    $this->data['display_tasks'] = $result;
@@ -69,7 +73,11 @@ class Mtce extends Application
 	        	break;
 	    }
 	    $this->data['pagination'] = $this->pagenav($pageNum);
-	    $this->show_page($tasks);
+		$role = $this->session->userdata('userrole');
+		if ($role == ROLE_OWNER) 
+        $this->data['pagination'] .= $this->parser->parse('itemadd',[], true);
+		$this->show_page($tasks);
+	
 	}
 
 	// Build the pagination navbar
