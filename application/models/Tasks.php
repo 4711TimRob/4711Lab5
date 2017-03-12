@@ -38,8 +38,9 @@ class Tasks extends MY_Model
 	    $config = array(
 	        ['field' => 'task', 'label' => 'TODO task', 'rules' => 'alpha_numeric_spaces|max_length[64]'],
 	        ['field' => 'priority', 'label' => 'Priority', 'rules' => 'integer|less_than[4]'],
-	        ['field' => 'size', 'label' => 'Task size', 'rules' => 'integer|less_than[4]'],
-	        ['field' => 'group', 'label' => 'Task group', 'rules' => 'integer|less_than[5]'],
+	        ['field' => 'size', 'label' => 'Size', 'rules' => 'integer|less_than[4]'],
+	        ['field' => 'group', 'label' => 'Group', 'rules' => 'integer|less_than[5]'],
+			['field' => 'status', 'label' => 'Status', 'rules' => 'integer|less_than[5]'],
 	    );
 	    return $config;
 	}
